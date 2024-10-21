@@ -1,1 +1,16 @@
 Explain the code execution based on the order of the messages logged in src/quiz/promise-2darray.txt.
+
+The code defines a function sumNums that takes a 2-D array of numbers (arr) and returns a promise that either 
+resolves with the sum of the numbers or rejects if the array is empty.
+When sumNums is invoked with the 2-D array, "Sum called..." is logged to the console. 
+Since the function uses a setTimeout with 0 milliseconds, it simulates an asynchronous operation. 
+Hence, the function moves on and logs "returning from sum".
+
+sumNums is then invoked with an empty array, hence "Sum called ..." is logged. 
+Since the array is empty, the promise is rejected immediately, so "returning from sum" is still logged because 
+the setTimeout is set up and then "Cannot sum an empty array" is logged via the .catch() handler.
+
+After the asynchronous delay of setTimeout, the summing starts. "Adding 1 to sum, Adding 2 to sum, ... Adding 9 
+to sum" are logged as each number is processed. 
+After all the numbers are added, the promise is resolved with the sum 45 and "45" is logged through 
+the .then() handler.
